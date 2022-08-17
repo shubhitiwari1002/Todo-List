@@ -1,0 +1,46 @@
+<%- include("header")-%>
+<!-- These are called layouts -->
+
+    <div class="box" id="heading">
+        <h1 ><%= listTitle %></h1>
+    </div>
+
+    <div class="box">
+        
+
+        <% newListItems.forEach(function(item){%>
+            <form action="/delete" method="POST" >
+                <div class="item">
+                    <input type="checkbox" name="checkbox" value="<%=item._id %>" onchange="this.form.submit()" >
+                    <p><%= item.name %></p>
+                </div>
+                <input type="hidden" name="listName" value="<%= listTitle %>"></input>
+            </form>
+            
+            <% })%>
+            
+                   
+        <form class="item" action="/" method="POST"> 
+            <input autocomplete="off" type="text" name="newitem" id="newItem" placeholder="New Item">
+            <button  type="submit" name="list" value="<%= listTitle %>">+</button>
+            <!-- type = submit means tiggers the post request to given route -->
+            <!-- To use same tempelate and also same butten but different work keep the value of button dynamic --> 
+        </form> 
+
+    </div>
+
+
+    <%- include("footer")-%>
+
+
+
+
+
+   
+
+
+
+
+
+
+   
